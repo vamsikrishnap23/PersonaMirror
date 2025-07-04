@@ -14,15 +14,15 @@ def extract_required_cookies(input_file='raw_cookies.json', output_file='cookies
             twikit_cookies[name] = value
 
     if len(twikit_cookies) != len(required_keys):
-        print("❌ Missing required cookies. Found:", list(twikit_cookies.keys()))
-        print("✅ Make sure you're logged in to Twitter/X and export cookies *after* logging in.")
+        print("Missing required cookies. Found:", list(twikit_cookies.keys()))
+        print("Make sure you're logged in to Twitter/X and export cookies *after* logging in.")
         return
 
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(twikit_cookies, f, indent=4)
 
-    print(f"✅ Reformatted cookies saved to `{output_file}`")
-    print("📎 Contents:", twikit_cookies)
+    print(f"Reformatted cookies saved to `{output_file}`")
+    print("Contents:", twikit_cookies)
 
 
 if __name__ == "__main__":

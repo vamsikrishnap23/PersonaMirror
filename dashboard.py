@@ -26,14 +26,15 @@ MODEL = "llama3-70b-8192"
 
 
 
-st.set_page_config(page_title="Persona Builder", layout="wide")
-st.title("Persona Builder")
+st.set_page_config(page_title="PersonaMirror", layout="wide")
+logo_path = os.path.join("images", "logo1.png")
+
+st.image(logo_path, width=300) 
+
+
 
 tab1, tab2, tab3, tab4 = st.tabs(["Dashboard", "Build Persona", "Chat with Leads", "Find Similar Persona"])
 
-# -------------------------
-# 📊 Dashboard tab
-# -------------------------
 with tab1:
     st.header("View Persona")
 
@@ -58,7 +59,6 @@ with tab1:
             tweets_text = ""
             st.warning("No tweets found.")
 
-        # Show Word Cloud
         if tweets_text:
             st.subheader("Word Cloud")
             wordcloud = WordCloud(width=2400, height=1200, background_color="white", colormap="tab10").generate(tweets_text)
@@ -76,16 +76,12 @@ with tab1:
             st.warning("No outreach email found. Generate one in the workflow tab.")
 
 
-# -------------------------
-# ⚙️ Workflow tab
-# -------------------------
-
 with tab2:
     st.header("Persona Workflow")
 
     username = st.text_input("Enter Twitter username")
 
-    with st.expander("🔐 How to Authenticate with Your Twitter Cookies", expanded=False):
+    with st.expander("How to Authenticate with Your Twitter Cookies", expanded=False):
         st.markdown("### Authentication Required")
         st.info("""
         To scrape tweets securely from your own Twitter/X account, you need to provide a valid `cookies.json` file.
@@ -98,7 +94,7 @@ with tab2:
         """)
 
         st.download_button(
-            label="⬇Download Cookie Reformat Script",
+            label="Download Cookie Reformat Script",
             file_name="reformat_cookies.py",
             mime="text/x-python",
             data="""
@@ -190,7 +186,6 @@ with tab3:
         with open(persona_path, "r", encoding="utf-8") as f:
             persona_yaml = f.read()
 
-        # Chat tone selection
         tone = st.radio("Select response style", [
             "Default",
             "Cold Outreach Mode",
@@ -198,7 +193,7 @@ with tab3:
             "Pitch Evaluation"
         ])
 
-        # Conversation state
+
         if "chat_history" not in st.session_state:
             st.session_state.chat_history = []
 
@@ -206,7 +201,7 @@ with tab3:
         if user_msg:
             st.session_state.chat_history.append({"role": "user", "content": user_msg})
 
-            # Tone-specific instruction
+
             tone_instructions = {
                 "Default": "",
                 "Cold Outreach Mode": "- Prioritize concise, skeptical, ROI-focused replies.",
