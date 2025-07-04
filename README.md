@@ -65,7 +65,7 @@ Compares the lead with an ideal customer profile using cosine similarity.
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/persona_mirror.git
+git clone https://github.com/vamsikrishnap23/PersonaMirror.git
 cd persona_mirror
 ```
 
