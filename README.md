@@ -111,7 +111,7 @@ python reformat_cookies.py
 ### 5. Run the Application
 
 ```bash
-streamlit run app.py
+streamlit run dashboard.py
 ```
 
 ---
@@ -138,33 +138,29 @@ streamlit run app.py
 
 ```
 persona_mirror/
-├── app.py                 # Main Streamlit application
-├── reformat_cookies.py    # Cookie processing script
-├── requirements.txt       # Python dependencies
-├── .env                   # Environment variables (create this)
-├── raw_cookies.json      # Exported cookies (create this)
-├── images/               # Screenshot images
-└── README.md            # This file
+├── dashboard.py             # Streamlit dashboard UI
+├── generate_outreach.py     # Generates cold outreach emails
+├── generate_persona.py      # Generates persona YAML from tweets
+├── login.py                 # Cookie-based Twitter login
+├── persona_similarity.py    # Persona cosine similarity matching
+├── reformat_cookies.py      # Script to clean cookies from EditThisCookie
+├── requirements.txt         # Python dependencies
+├── scrape_tweets.py         # Scrapes tweets using Twikit
+├── simulate_persona_groq.py # Chat simulation using Groq LLaMA3
+├── utils.py                 # Helper utilities (paths, loaders, etc.)
+├── README.md                # Project documentation
+├── .gitignore               # Files to ignore in Git
+├── images/                  # Screenshots and logos
+│   └── (logo1.png, screenshots...)
+
 ```
 
 ---
 
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
----
-
-
-
 ## Project Info
 
 - **Title:** PersonaMirror
-- **Author:**  Vamsi Krishna
+- **Author:** Vamsi Krishna
 - **Date:** July 2025
 
 ---
